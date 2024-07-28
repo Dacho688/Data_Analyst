@@ -9,7 +9,7 @@ from streaming import stream_to_gradio
 from huggingface_hub import login
 from gradio.data_classes import FileData
 
-login(os.getenv("HUGGINGFACEHUB_API_TOKEN"))
+login(os.getenv("HF_TOKEN"))
 
 llm_engine = HfEngine("meta-llama/Meta-Llama-3.1-70B-Instruct")
 
