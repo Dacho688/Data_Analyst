@@ -1,6 +1,6 @@
 from transformers.agents.agent_types import AgentAudio, AgentImage, AgentText, AgentType
 from transformers.agents import ReactAgent
-
+import spaces
 
 def pull_message(step_log: dict):
     try:
@@ -29,7 +29,7 @@ def pull_message(step_log: dict):
             metadata={"title": "💥 Error"},
         )
 
-
+@spaces.GPU
 def stream_to_gradio(agent: ReactAgent, task: str, **kwargs):
     """Runs an agent with the given task and streams the messages from the agent as gradio ChatMessages."""
 
