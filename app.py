@@ -5,7 +5,7 @@ from transformers import ReactCodeAgent, HfEngine, Tool
 import pandas as pd
 
 from gradio import Chatbot
-from test_streaming import stream_to_gradio
+from streaming import stream_to_gradio
 from huggingface_hub import login
 from gradio.data_classes import FileData
 
