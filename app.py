@@ -9,7 +9,7 @@ from streaming import stream_to_gradio
 from huggingface_hub import login
 from gradio.data_classes import FileData
 
-#login(os.getenv("HUGGINGFACEHUB_API_TOKEN"))
+login(os.getenv("HUGGINGFACEHUB_API_TOKEN"))
 
 llm_engine = HfEngine("meta-llama/Meta-Llama-3.1-70B-Instruct")
 
@@ -136,4 +136,4 @@ Drop a `.csv` file below and ask a question about your data.
     submit.click(interact_with_agent, [file_input, text_input], [chatbot])
 
 if __name__ == "__main__":
-    demo.launch(server_port=7861)
+    demo.launch()
