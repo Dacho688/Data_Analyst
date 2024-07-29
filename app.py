@@ -9,32 +9,37 @@ from streaming import stream_to_gradio
 from huggingface_hub import login
 from gradio.data_classes import FileData
 
-login(os.getenv("HUGGINGFACEHUB_API_TOKEN"))
+#login(os.getenv("HUGGINGFACEHUB_API_TOKEN"))
 
 llm_engine = HfEngine("meta-llama/Meta-Llama-3.1-70B-Instruct")
 
 agent = ReactCodeAgent(
     tools=[],
     llm_engine=llm_engine,
-    additional_authorized_imports=["numpy", "pandas", "matplotlib.pyplot", "seaborn", "scipy.stats"],
+    additional_authorized_imports=["numpy", "pandas", "matplotlib", "seaborn","scipy"],
     max_iterations=10,
 )
 
 base_prompt = """You are an expert data analyst.
-According to the features you have and the data structure given below, determine which feature should be the target.
-Then list 3 interesting questions that could be asked on this data, for instance about specific correlations with target variable.
-Then answer these questions one by one, by finding the relevant numbers.
-Meanwhile, plot some figures using matplotlib/seaborn and save them to the (already existing) folder './figures/': take care to clear each figure with plt.clf() before doing another plot.
+You are given a data file and the data structure below.
+The data file is passed to you as the variable data_file, it is a pandas dataframe, you can use it directly.
+DO NOT try to load data_file, it is already a dataframe pre-loaded in your python interpreter!
 
-In your final answer: summarize these correlations and trends
+When importing packages use this format: from package import module
+For example: from matplotlib import pyplot as plt
+Not: import matplotlib.pyplot as plt
+
+As you work, check for NoneType values and convert to NAN.
+
+Use the data file to answer the question or solve a problem given below.
+
+In your final answer: summarize your findings
 After each number derive real worlds insights, for instance: "Correlation between is_december and boredness is 1.3453, which suggest people are more bored in winter".
-Your final answer should be a long string with at least 3 numbered and detailed parts.
 
 Structure of the data:
 {structure_notes}
 
-The data file is passed to you as the variable data_file, it is a pandas dataframe, you can use it directly.
-DO NOT try to load data_file, it is already a dataframe pre-loaded in your python interpreter!
+Question/Problem:
 """
 
 example_notes="""This data is about the Titanic wreck in 1912.
@@ -75,9 +80,9 @@ def interact_with_agent(file_input, additional_notes):
     prompt = base_prompt.format(structure_notes=data_structure_notes)
 
     if additional_notes and len(additional_notes) > 0:
-        prompt += "\nAdditional notes on the data:\n" + additional_notes
+        prompt += additional_notes
 
-    messages = [gr.ChatMessage(role="user", content=prompt)]
+    messages = [gr.ChatMessage(role="user", content=additional_notes)]
     yield messages + [
         gr.ChatMessage(role="assistant", content="⏳ _Starting task..._")
     ]
@@ -101,18 +106,19 @@ def interact_with_agent(file_input, additional_notes):
 
 with gr.Blocks(
     theme=gr.themes.Soft(
-        primary_hue=gr.themes.colors.yellow,
-        secondary_hue=gr.themes.colors.blue,
+        primary_hue=gr.themes.colors.blue,
+        secondary_hue=gr.themes.colors.yellow,
     )
 ) as demo:
     gr.Markdown("""# Llama-3.1 Data analyst 📊🤔
 
-Drop a `.csv` file below, add notes to describe this data if needed, and **Llama-3.1-70B will analyze the file content and draw figures for you!**""")
+Drop a `.csv` file below and ask a question about your data. 
+**Llama-3.1-70B will analyze and answer.**""")
     file_input = gr.File(label="Your file to analyze")
     text_input = gr.Textbox(
-        label="Additional notes to support the analysis"
+        label="Ask a question about your data?"
     )
-    submit = gr.Button("Run analysis!", variant="primary")
+    submit = gr.Button("Run", variant="primary")
     chatbot = gr.Chatbot(
         label="Data Analyst Agent",
         type="messages",
@@ -121,13 +127,13 @@ Drop a `.csv` file below, add notes to describe this data if needed, and **Llama
             "https://em-content.zobj.net/source/twitter/53/robot-face_1f916.png",
         ),
     )
-    gr.Examples(
-        examples=[["./example/titanic.csv", example_notes]],
-        inputs=[file_input, text_input],
-        cache_examples=False
-    )
+    # gr.Examples(
+    #     examples=[["./example/titanic.csv", example_notes]],
+    #     inputs=[file_input, text_input],
+    #     cache_examples=False
+    # )
 
     submit.click(interact_with_agent, [file_input, text_input], [chatbot])
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(server_port=7861)
