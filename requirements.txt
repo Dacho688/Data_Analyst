@@ -4,6 +4,7 @@ seaborn
 scikit-learn
 scipy
 transformers
-pandas==2.2.2
+pandas
 huggingface_hub
-transformers
+numpy
+pandas
