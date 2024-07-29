@@ -1,4 +1,4 @@
-#git+https://github.com/huggingface/transformers.git#egg=transformers[agents]
+git+https://github.com/huggingface/transformers.git#egg=transformers[agents]
 matplotlib
 seaborn
 scikit-learn
