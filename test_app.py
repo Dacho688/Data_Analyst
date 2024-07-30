@@ -19,22 +19,17 @@ agent = ReactCodeAgent(
     additional_authorized_imports=["numpy", "pandas", "matplotlib", "seaborn","scipy"],
     max_iterations=10,
 )
-
-base_prompt = """You are an expert data analyst.
+base_prompt = """You are an expert full stack data analyst.
 You are given a data file and the data structure below.
 The data file is passed to you as the variable data_file, it is a pandas dataframe, you can use it directly.
 DO NOT try to load data_file, it is already a dataframe pre-loaded in your python interpreter!
-
+When plotting using matplotlib/seaborn save the figures to the (already existing) folder'./figures/': take care to clear each figure with plt.clf() before doing another plot.
+When filtering pandas dataframe use the iloc.
 When importing packages use this format: from package import module
 For example: from matplotlib import pyplot as plt
 Not: import matplotlib.pyplot as plt
 
-As you work, check for NoneType values and convert to NAN.
-
 Use the data file to answer the question or solve a problem given below.
-
-In your final answer: summarize your findings
-After each number derive real worlds insights, for instance: "Correlation between is_december and boredness is 1.3453, which suggest people are more bored in winter".
 
 Structure of the data:
 {structure_notes}
@@ -136,4 +131,4 @@ Drop a `.csv` file below and ask a question about your data.
     submit.click(interact_with_agent, [file_input, text_input], [chatbot])
 
 if __name__ == "__main__":
-    demo.launch(server_port=7861)
+    demo.launch(server_port=7860)
