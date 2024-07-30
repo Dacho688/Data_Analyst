@@ -3,8 +3,3 @@ matplotlib
 seaborn
 scikit-learn
 scipy
-transformers
-pandas
-huggingface_hub
-numpy
-pandas
