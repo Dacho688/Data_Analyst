@@ -1,15 +1,10 @@
-title: Davor Kondic # your name (or website title) here
+title: Data Analyst # your name (or website title) here
 logo: "/images/linkedin.jpg?raw=true" # your photo (or logo) here
 description: > # your text below (remove <br> elements if you don't need line breaks)
   <br>
-  Results-driven Data Science professional with over a decade of experience in extracting actionable insights from data. Proven track record of leveraging data analytics to inform business decisions and drive growth. Passionate about data-driven decision making and staying at the forefront of data science trends. 
-
+  I’m your personal Data Analyst built on top of Llama-3.1-70B and the ReAct agent framework. I break down your task step-by-step until I reach an answer/solution. Along the way I share my thoughts, actions (Python code blobs), and observations. I come packed with pandas, numpy, sklearn, matplotlib, seaborn, and more!
   <br><br>
-  <a href="https://www.linkedin.com/in/davor-kondic-54576886/">View my LinkedIn Profile</a>
-  <br>
-  <a href="https://huggingface.co/dkondic">View my HuggingFace LLM demos.</a>
-  <br>
-  <a href="https://github.com/Dacho688">View my GitHub repos.</a>
+  <a href="https://huggingface.co/spaces/dkondic/data-analyst">Try me on Hugging Face!</a>
 
 theme: jekyll-theme-minimal
 #google_analytics: UA-000000-0 # your Google Analytics tracking ID here
