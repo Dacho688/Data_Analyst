@@ -127,11 +127,6 @@ I come packed with pandas, numpy, sklearn, matplotlib, seaborn, and more!
 2. Ask a question or give it a task.
 3. **Watch Llama-3.1-70B think, act, and observe until final answer.
 \n**For an example, click on the example at the bottom of page to auto populate.**""")
-    file_input = gr.File(label="Drop/upload a .csv file to analyze")
-    text_input = gr.Textbox(
-        label="Ask a question or give it a task."
-    )
-    submit = gr.Button("Run", variant="primary")
     chatbot = gr.Chatbot(
         label="Data Analyst Agent",
         type="messages",
@@ -140,6 +135,11 @@ I come packed with pandas, numpy, sklearn, matplotlib, seaborn, and more!
             "https://em-content.zobj.net/source/twitter/53/robot-face_1f916.png",
         ),
     )
+    file_input = gr.File(label="Drop/upload a .csv file to analyze")
+    text_input = gr.Textbox(
+        label="Ask a question or give it a task."
+    )
+    submit = gr.Button("Run", variant="primary")
     gr.Examples(
         examples=[["./example/titanic.csv", example_notes]],
         inputs=[file_input, text_input],
