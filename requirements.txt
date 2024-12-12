@@ -1,4 +1,4 @@
-git+https://github.com/huggingface/transformers.git#egg=transformers[agents]
+transformers == 4.43.3
 matplotlib
 seaborn
 scikit-learn
