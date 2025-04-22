@@ -8,7 +8,7 @@ sdk_version: 4.38.1
 app_file: app.py
 pinned: false
 license: apache-2.0
-short_description: Need to analyze data? Let a Llama-3.3 AI agent do it for you!
+short_description: Llama-3.3-70B-Instruct AI agent.
 ---
 ## Agent Data Analyst
 
