@@ -129,4 +129,4 @@ I come packed with pandas, numpy, sklearn, matplotlib, seaborn, and more!
     submit.click(interact_with_agent, [file_input, text_input], [chatbot])
 
 if __name__ == "__main__":
-    demo.launch(share=True)
+    demo.launch()
