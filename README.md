@@ -2,7 +2,7 @@
 title: Data Analyst AI Agent
 emoji: 🤔📊
 colorFrom: yellow
-colorTo: red
+colorTo: blue
 sdk: gradio
 sdk_version: 5.25.2
 app_file: app.py
