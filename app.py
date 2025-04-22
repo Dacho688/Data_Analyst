@@ -1,5 +1,5 @@
 import os
-import shutilos.getenv("HUGGINGFACEHUB_API_TOKEN")
+import shutil
 import gradio as gr
 from transformers import ReactCodeAgent, HfEngine, Tool
 import pandas as pd
