@@ -1,5 +1,5 @@
 import os
-import shutil
+import shutilos.getenv("HUGGINGFACEHUB_API_TOKEN")
 import gradio as gr
 from transformers import ReactCodeAgent, HfEngine, Tool
 import pandas as pd
@@ -129,4 +129,4 @@ I come packed with pandas, numpy, sklearn, matplotlib, seaborn, and more!
     submit.click(interact_with_agent, [file_input, text_input], [chatbot])
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(share=True)
