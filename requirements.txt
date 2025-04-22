@@ -1,4 +1,6 @@
 transformers == 4.43.3
+pandas
+numpy
 matplotlib
 seaborn
 scikit-learn

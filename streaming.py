@@ -61,4 +61,4 @@ def stream_to_gradio(agent: ReactAgent, task: str, **kwargs):
             content={"path": Output.output.to_string(), "mime_type": "audio/wav"},
         )
     else:
-        yield ChatMessage(role="assistant", content=Output.output)
+        yield ChatMessage(role="assistant", content=str(Output.output))

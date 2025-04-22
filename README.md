@@ -1,5 +1,5 @@
 ---
-title: Agent Data Analyst
+title: Data Analyst AI Agent
 emoji: 🤔📊
 colorFrom: yellow
 colorTo: red
@@ -8,7 +8,11 @@ sdk_version: 4.38.1
 app_file: app.py
 pinned: false
 license: apache-2.0
-short_description: Need to analyze data? Let a Llama-3.1 agent do it for you!
+short_description: Need to analyze data? Let a Llama-3.3 AI agent do it for you!
 ---
+## Agent Data Analyst
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+I'm your personal Data Analyst AI Agent built on top of Llama-3.3-70B-Instruct model and the ReAct (Reasoning and Acting) framework.
+I break down the task step-by-step until I reach an answer/solution.
+Along the way I share my thoughts, actions (Python code blobs), and observations.
+I come packed with pandas, numpy, sklearn, matplotlib, seaborn, and more!
