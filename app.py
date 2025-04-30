@@ -17,7 +17,7 @@ agent = ReactCodeAgent(
     tools=[],
     llm_engine=llm_engine,
     additional_authorized_imports=["numpy", "pandas", "matplotlib", "seaborn","scipy","sklearn"],
-    max_iterations=10,
+    max_iterations=2,
 )
 
 base_prompt = """You are an expert full stack data analyst.
@@ -103,6 +103,7 @@ I come packed with pandas, numpy, sklearn, matplotlib, seaborn, and more!
 1. Drop or upload a `.csv` file below.
 2. Ask a question or give it a task.
 3. **Watch the AI Agent think, act, and observe until final answer.
+4. **Please note that this is only a demo and thus max_iterations has been set to 2 in order to limit inference costs.
 \n**For an example, click on the example at the bottom of page to auto populate.**""")
 
     file_input = gr.File(label="Drop/upload a .csv file to analyze")
